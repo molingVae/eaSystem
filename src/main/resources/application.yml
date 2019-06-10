@@ -12,7 +12,7 @@ pagehelper:
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://47.104.162.245:3306/tcm?useUnicode=true&characterEncoding=utf8&useSSL=true
+    url: jdbc:mysql://47.104.162.245:3306/eaSystem?useUnicode=true&characterEncoding=utf8&useSSL=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456l
