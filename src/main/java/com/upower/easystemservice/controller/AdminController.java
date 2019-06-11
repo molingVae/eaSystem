@@ -23,8 +23,9 @@ public class AdminController {
         return adminService.insertAdamin(admin);
     }
     //删除用户
-    @PostMapping("/deleteAdmin")
-    public String deleteAdmin(Integer id){
+    @GetMapping("/deleteAdmin")
+    public String deleteAdmin(int id){
+        System.out.println(id);
         return adminService.deleteAdmin(id);
     }
     //修改用户

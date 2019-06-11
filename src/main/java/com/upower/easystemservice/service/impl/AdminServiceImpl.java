@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.upower.easystemservice.mapper.AdminMapper;
 import com.upower.easystemservice.pojo.Admin;
 import com.upower.easystemservice.pojo.PageBean;
+import com.upower.easystemservice.pojo.User;
 import com.upower.easystemservice.service.AdminService;
 import com.upower.easystemservice.util.StringRandom;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * description:
@@ -33,6 +35,12 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public String insertAdamin(Admin admin) {
 
+        List<User> users = adminMapper.selectUserAll();
+        for (User user : users) {
+            if (user.getName().equals(admin.getName())) {
+                return "姓名不能重复";
+            }
+        }
         String[] acc = {"admin"};
         admin.setToken(StringRandom.getStringRandom(15));
         admin.setAccess(Arrays.toString(acc));
@@ -75,7 +83,7 @@ public class AdminServiceImpl implements AdminService {
      * @return
      */
     @Override
-    public String deleteAdmin(Integer id) {
+    public String deleteAdmin(int id) {
         int i = adminMapper.deleteAdmin(id);
         if (i > 0) {
             return "删除成功";

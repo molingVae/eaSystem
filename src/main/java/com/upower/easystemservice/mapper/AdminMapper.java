@@ -1,6 +1,7 @@
 package com.upower.easystemservice.mapper;
 
 import com.upower.easystemservice.pojo.Admin;
+import com.upower.easystemservice.pojo.User;
 import org.apache.ibatis.annotations.*;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -30,9 +31,12 @@ public interface AdminMapper extends Mapper<Admin> {
             ",departname=#{departname},position=#{position},tel=#{tel},address=#{address} WHERE name = #{name}")
     int updateAdmin(Admin admin);
 
-    @Delete("delete from user where id=#{id}")
-    int deleteAdmin(@Param("id")Integer id);
+    @Delete("delete from user where user_id=#{user_id}")
+    int deleteAdmin(@Param("user_id")Integer user_id);
 
+
+    @Select("select * from user")
+    List<User> selectUserAll();
 }
 
 

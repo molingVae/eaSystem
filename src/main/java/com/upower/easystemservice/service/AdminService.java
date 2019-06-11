@@ -9,7 +9,7 @@ public interface AdminService {
 
     PageBean searchAdmin(String name, Integer page, Integer limit);
 
-    String deleteAdmin(Integer id);
+    String deleteAdmin(int id);
 
     String updateAdmin(Admin admin);
 }

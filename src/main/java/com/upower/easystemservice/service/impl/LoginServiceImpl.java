@@ -20,10 +20,10 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String login(String userName, String password) {
         User user = loginMapper.selectUserByname(userName);
-        if(user!=null && user.getPassword().equals(password)){
+        if(user.getPassword().equals(password)){
             return user.getToken();
         }
-        return "";
+        return null;
     }
 
     @Override
