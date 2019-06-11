@@ -13,8 +13,8 @@ public interface TeacherMapper {
      * @param teacher
      * @return
      */
-    @Insert("insert into user(access,avator,token,roles,name,password,sex,idcard,birthday,departname,position,majorname,degree,tel,address) " +
-            "values(#{access},#{avator},#{token},#{roles},#{name},#{password},#{sex},#{idcard},#{birthday},#{departname},#{position},#{majorname},#{degree},#{tel},#{address}) ")
+    @Insert("insert into user(access,avator,token,roles,name,password,sex,idcard,departname,position,majorname,birthday,degree,tel,address) " +
+            "values(#{access},#{avator},#{token},#{roles},#{name},#{password},#{sex},#{idcard},#{departname},#{position},#{majorname},#{birthday},#{degree},#{tel},#{address}) ")
     int insertTeacher(Teacher teacher);
     /**
      * 模糊查询

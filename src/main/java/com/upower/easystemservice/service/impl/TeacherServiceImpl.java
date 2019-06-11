@@ -9,11 +9,13 @@ import com.upower.easystemservice.pojo.User;
 import com.upower.easystemservice.service.TeacherService;
 import com.upower.easystemservice.util.StringRandom;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class TeacherServiceImpl implements TeacherService {
     @Autowired
     private TeacherMapper teacherMapper;

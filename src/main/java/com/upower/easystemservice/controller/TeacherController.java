@@ -16,23 +16,23 @@ public class TeacherController {
     private TeacherService teacherService;
     //查询所有用户接口
     @GetMapping("/searchTeacher")
-    public PageBean searchAdmin(String name, Integer page, Integer limit){
+    public PageBean searchTeacher(String name, Integer page, Integer limit){
         return teacherService.searchTeacher(name,page,limit);
     }
     //添加
     @PostMapping("/insertTeacher")
-    public String insertAdmin(Teacher teacher){
+    public String insertTeacher(Teacher teacher){
         return teacherService.insertTeacher(teacher);
     }
     //删除用户
     @GetMapping("/deleteTeacher")
-    public String deleteAdmin(int id){
+    public String deleteTeacher(int id){
         System.out.println(id);
         return teacherService.deleteTeacher(id);
     }
     //修改用户
     @PostMapping("/updateTeacher")
-    public String updateAdmin(Teacher teacher){
+    public String updateTeacher(Teacher teacher){
         return teacherService.updateTeacher(teacher);
     }
 }
