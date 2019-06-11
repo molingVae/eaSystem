@@ -15,24 +15,24 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
     //查询所有用户接口
-    @GetMapping("/searchTeacher")
-    public PageBean searchTeacher(String name, Integer page, Integer limit){
+    @GetMapping("/searchStudent")
+    public PageBean searchStudent(String name, Integer page, Integer limit){
         return studentService.searchStudent(name,page,limit);
     }
     //添加
-    @PostMapping("/insertTeacher")
-    public String insertTeacher(Student student){
+    @PostMapping("/insertStudent")
+    public String insertStudent(Student student){
         return studentService.insertStudent(student);
     }
     //删除用户
-    @GetMapping("/deleteTeacher")
-    public String deleteTeacher(int id){
+    @GetMapping("/deleteStudent")
+    public String deleteStudent(int id){
         System.out.println(id);
         return studentService.deleteStudent(id);
     }
     //修改用户
-    @PostMapping("/updateTeacher")
-    public String updateTeacher(Student student){
+    @PostMapping("/updateStudent")
+    public String updateStudent(Student student){
         return studentService.updateStudent(student);
     }
 }
