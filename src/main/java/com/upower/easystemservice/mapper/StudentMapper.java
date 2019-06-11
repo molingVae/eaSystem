@@ -13,8 +13,8 @@ public interface StudentMapper {
      * @param student
      * @return
      */
-    @Insert("insert into user(access,avator,token,roles,name,password,sex,idcard,departname,position,majorname,birthday,degree,tel,address) " +
-            "values(#{access},#{avator},#{token},#{roles},#{name},#{password},#{sex},#{idcard},#{departname},#{position},#{majorname},#{birthday},#{degree},#{tel},#{address}) ")
+    @Insert("insert into user(access,avator,token,roles,name,password,sex,idcard,departname,majorname,birthday,degree,tel,address) " +
+            "values(#{access},#{avator},#{token},#{roles},#{name},#{password},#{sex},#{idcard},#{departname},#{majorname},#{birthday},#{degree},#{tel},#{address}) ")
     int insertStudent(Student student);
     /**
      * 模糊查询
@@ -26,7 +26,7 @@ public interface StudentMapper {
     List<Student> searchStudent(@Param("name") String name, @Param("roles") String roles);
 
     @Update("update user set password = #{password},idcard=#{idcard},birthday=#{birthday},sex=#{sex},departname=#{departname},majorname=#{majorname}," +
-            "position=#{position},degree=#{degree},tel=#{tel},address=#{address} WHERE name = #{name}")
+            "degree=#{degree},tel=#{tel},address=#{address} WHERE name = #{name}")
     int updateStudent(Student student);
 
     @Delete("delete from user where user_id=#{user_id}")
