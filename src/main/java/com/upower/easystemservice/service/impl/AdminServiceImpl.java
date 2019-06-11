@@ -25,6 +25,11 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
 
+    /**
+     * 添加用户
+     * @param admin
+     * @return
+     */
     @Override
     public String insertAdamin(Admin admin) {
 
@@ -62,6 +67,36 @@ public class AdminServiceImpl implements AdminService {
 
         }
         return new PageBean(pages.getTotal(), pages.getResult());
+    }
+
+    /**
+     * 删除用户
+     * @param id 用户编号
+     * @return
+     */
+    @Override
+    public String deleteAdmin(Integer id) {
+        int i = adminMapper.deleteAdmin(id);
+        if (i > 0) {
+            return "删除成功";
+        } else {
+            return "删除失败";
+        }
+    }
+
+    /**
+     *
+     * @param admin
+     * @return
+     */
+    @Override
+    public String updateAdmin(Admin admin) {
+        int i = adminMapper.updateAdmin(admin);
+        if (i > 0) {
+            return "修改成功";
+        } else {
+            return "修改失败";
+        }
     }
 
 }

@@ -8,4 +8,8 @@ public interface AdminService {
     String insertAdamin(Admin admin);
 
     PageBean searchAdmin(String name, Integer page, Integer limit);
+
+    String deleteAdmin(Integer id);
+
+    String updateAdmin(Admin admin);
 }

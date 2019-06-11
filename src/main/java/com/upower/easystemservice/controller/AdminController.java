@@ -17,9 +17,19 @@ public class AdminController {
     public PageBean searchAdmin(String name, Integer page, Integer limit){
         return adminService.searchAdmin(name,page,limit);
     }
-
+    //添加
     @PostMapping("/insertAdmin")
     public String insertAdmin(Admin admin){
         return adminService.insertAdamin(admin);
+    }
+    //删除用户
+    @PostMapping("/deleteAdmin")
+    public String deleteAdmin(Integer id){
+        return adminService.deleteAdmin(id);
+    }
+    //修改用户
+    @PostMapping("/updateAdmin")
+    public String updateAdmin(Admin admin){
+        return adminService.updateAdmin(admin);
     }
 }
