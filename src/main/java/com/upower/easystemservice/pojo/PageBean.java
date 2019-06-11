@@ -6,11 +6,11 @@ import java.util.List;
 
 @Data
 public class PageBean {
-    private Long total;
+    private Long count;
     private List rows;
 
-    public PageBean(Long total, List rows) {
-        this.total = total;
+    public PageBean(Long count, List rows) {
+        this.count = count;
         this.rows = rows;
     }
 }

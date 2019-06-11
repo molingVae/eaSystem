@@ -7,18 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class AdminController {
+
     @Autowired
-    private AdminService service;
+    private AdminService adminService;
     //查询所有用户接口
-    @GetMapping("/getAllAdmin")
-    public PageBean getAllAdmin(@RequestParam("pageCode") int pageCode, @RequestParam("pageSize") int pageSize){
-        return service.getAllAdmin(pageCode,pageSize);
+    @GetMapping("/searchAdmin")
+    public PageBean searchAdmin(String name, Integer page, Integer limit){
+        return adminService.searchAdmin(name,page,limit);
     }
-    // 用户添加接口
-    @RequestMapping(value = "/insertAdmin",method = RequestMethod.POST)
-    public void insertAdmin(@RequestBody Admin admin){
-        service.insertAdamin(admin);
+
+    @PostMapping("/insertAdmin")
+    public String insertAdmin(Admin admin){
+        return adminService.insertAdamin(admin);
     }
 }
