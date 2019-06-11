@@ -3,7 +3,7 @@ package com.upower.easystemservice.pojo;
 import lombok.Data;
 
 @Data
-public class admin extends User{
+public class Admin extends User {
     private String sex;//性别：0是女，1是男
     private String idcard;//身份证
     private String birthday;//生日
