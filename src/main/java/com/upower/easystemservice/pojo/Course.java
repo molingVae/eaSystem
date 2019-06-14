@@ -4,10 +4,9 @@ import lombok.Data;
 
 @Data
 public class Course {
-    private String courseid;
-    private String coursename;
-    private String coursekind;
+    private Integer courseid;  //课程编号
+    private String coursename; //课程名字
+    private String coursekind; //
     private String coursetype;
     private Integer credit;
-
 }
