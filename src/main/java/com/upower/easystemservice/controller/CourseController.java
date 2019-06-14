@@ -22,14 +22,13 @@ public class CourseController {
     }
     //查询课程接口
     @GetMapping("/searchCourse")
-    public PageBean searchCourse(String coursename, Integer page, Integer limit){
-        return courseService.searchCoures(coursename,page,limit);
+    public PageBean searchCourse(String name, Integer page, Integer limit){
+        return courseService.searchCoures(name,page,limit);
     }
     //删除课程
     @GetMapping("/deleteCourse")
-    public String deleteCourse(int courseid){
-        System.out.println(courseid);
-        return courseService.deleteCoures(courseid);
+    public String deleteCourse(int id){
+        return courseService.deleteCoures(id);
     }
     //修改课程
     @PostMapping("/updateCourse")
