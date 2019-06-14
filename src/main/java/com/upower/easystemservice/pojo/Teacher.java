@@ -10,9 +10,11 @@ import java.util.Date;
 public class Teacher extends User {
     private String sex;//性别：0是女，1是男
     private String idcard;//身份证
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date birthday;//生日
+
     private String departname;//院系
     private String majorname;//专业
     private String degree;//毕业学历
