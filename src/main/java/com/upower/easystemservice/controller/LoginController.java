@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @CrossOrigin(origins = "*")
 @Slf4j
@@ -28,8 +30,10 @@ public class LoginController {
     }
 
     @GetMapping("/get_info")
-    public User get_info(String token) {
-        return loginService.get_info(token);
+    public User get_info(String token, HttpSession session) {
+        User info = loginService.get_info(token);
+        session.setAttribute("id",info.getUser_id());
+        return info;
     }
 
 }
