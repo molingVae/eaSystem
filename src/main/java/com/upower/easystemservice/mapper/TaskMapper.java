@@ -20,9 +20,9 @@ public interface TaskMapper {
     int deleteAdminTask(@Param("taskid")Integer taskid);
     //教学任务修改（管理员）
     @Update("update taskinfo set taskcourname=#{taskcourname},taskteaid=#{taskteaid},taskdepart=#{taskdepart}" +
-            ",taskyear=#{taskyear},taskteam=#{taskteam},taskway-=#{taskway},,classdate=#{classdate},classplace=#{classplace} where taskid=#{taskid} ")
+            ",taskyear=#{taskyear},taskteam=#{taskteam},taskway=#{taskway},classdate=#{classdate},classplace=#{classplace} where taskid=#{taskid} ")
     int updateAdminTask(AdminTask adminTask);
     //教学任务查询（教师）
-    @Select("select taskcourname,taskyear,taskteam,taskway,taskdepart from taskinfo where taskid=#{taskid}")
-    List<TeacherTask> serachTeacherTask(@Param("taskid")Integer taskid);
+    @Select("select taskid,taskcourname,taskyear,taskteam,taskway,taskdepart from taskinfo where taskteaid=#{taskteaid}")
+    List<TeacherTask> serachTeacherTask(@Param("taskteaid")Integer taskteaid);
 }
