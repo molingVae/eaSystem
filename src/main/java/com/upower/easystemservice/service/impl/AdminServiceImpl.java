@@ -2,7 +2,6 @@ package com.upower.easystemservice.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.upower.easystemservice.mapper.AdminMapper;
 import com.upower.easystemservice.pojo.Admin;
 import com.upower.easystemservice.pojo.PageBean;

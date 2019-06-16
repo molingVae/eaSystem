@@ -33,4 +33,5 @@ public class AdminController {
     public String updateAdmin(Admin admin){
         return adminService.updateAdmin(admin);
     }
+
 }
