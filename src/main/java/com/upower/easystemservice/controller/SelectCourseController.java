@@ -1,9 +1,11 @@
 package com.upower.easystemservice.controller;
 
+import com.upower.easystemservice.pojo.PageBean;
 import com.upower.easystemservice.pojo.SelectCourse;
 import com.upower.easystemservice.service.impl.SelectCourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +22,9 @@ public class SelectCourseController {
         return selectCourseService.insertSelectCourse(course);
     }
 
-    //选课信息（管理员）
-    //选课信息（老师）
+    //选课信息（）
+    @GetMapping("/searchSelectionInfo")
+    public PageBean searchSelectionInfo(String title,String token, Integer page, Integer limit) {
+        return selectCourseService.searchSelectionInfo(title,token,page, limit);
+    }
 }

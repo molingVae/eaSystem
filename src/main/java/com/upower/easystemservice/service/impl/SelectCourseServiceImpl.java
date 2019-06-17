@@ -1,8 +1,11 @@
 package com.upower.easystemservice.service.impl;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.upower.easystemservice.mapper.SelectCourseMapper;
 import com.upower.easystemservice.mapper.UserInfoMapper;
+import com.upower.easystemservice.pojo.PageBean;
 import com.upower.easystemservice.pojo.SelectCourse;
 import com.upower.easystemservice.service.SelectCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +35,20 @@ public class SelectCourseServiceImpl implements SelectCourseService {
     }
 
     @Override
-    public Object getUserInfo(String token) {
+    public PageBean searchSelectionInfo(String title, String token, Integer page, Integer limit) {
+        Page<SelectCourse> pages;
+        PageHelper.startPage(page, limit);//开启分页
         //根据token判断用户角色
         String access = userInfoMapper.getAccessBytoken(token);
         if(ADMIN.equals(access)){
             //管理员
-            return selectCourseMapper.searchAdminCourse();
+            pages = (Page<SelectCourse>) selectCourseMapper.searchAdminCourse();
+            return new PageBean(pages.getTotal(), pages.getResult());
         }else {
             //老师
             Integer id = userInfoMapper.getTeacher(token).getUser_id();
-            return selectCourseMapper.searchTeacherCourse(id);
+            pages = (Page<SelectCourse>) selectCourseMapper.searchTeacherCourse(id);
+            return new PageBean(pages.getTotal(), pages.getResult());
         }
     }
 
