@@ -8,4 +8,6 @@ public interface SelectCourseService {
     String insertSelectCourse(SelectCourse course);
 
     PageBean searchSelectionInfo(String title, String token, Integer page, Integer limit);
+
+    PageBean searchSchedule(String title, String token, Integer page, Integer limit);
 }

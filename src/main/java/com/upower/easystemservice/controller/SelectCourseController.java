@@ -27,4 +27,11 @@ public class SelectCourseController {
     public PageBean searchSelectionInfo(String title,String token, Integer page, Integer limit) {
         return selectCourseService.searchSelectionInfo(title,token,page, limit);
     }
+
+    //课表
+    @GetMapping("/searchSchedule")
+    public  PageBean searchSchedule(String title,String token, Integer page, Integer limit){
+        return selectCourseService.searchSchedule(title,token,page, limit);
+
+    }
 }

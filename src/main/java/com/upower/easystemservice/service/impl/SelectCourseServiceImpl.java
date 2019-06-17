@@ -64,4 +64,45 @@ public class SelectCourseServiceImpl implements SelectCourseService {
         return new PageBean(pages.getTotal(), pages.getResult());
     }
 
+
+     //课表
+    @Override
+    public PageBean searchSchedule(String title, String token, Integer page, Integer limit) {
+
+
+        Page<SelectCourse> pages;
+
+        //根据token判断用户角色
+        String access = userInfoMapper.getAccessBytoken(token);
+
+        Integer id = userInfoMapper.getTeacher(token).getUser_id();
+
+        PageHelper.startPage(page, limit);//开启分页
+        if(ADMIN.equals(access)){
+            if (StringUtils.isEmpty(title)){
+                //管理员
+                pages = (Page<SelectCourse>) selectCourseMapper.searchAdminCourse("");
+            }else {
+                pages = (Page<SelectCourse>) selectCourseMapper.searchAdminCourse(title);
+            }
+
+        }else if(TEACHER.equals(access)){
+            //老师
+            if(StringUtils.isEmpty(title)){
+                pages = (Page<SelectCourse>)selectCourseMapper.searchTeacherCourse(id,"");
+            }else {
+                pages = (Page<SelectCourse>)selectCourseMapper.searchTeacherCourse(id,title);
+            }
+
+        }else {
+            //学生
+            if(StringUtils.isEmpty(title)){
+                pages = (Page<SelectCourse>)selectCourseMapper.searchStudentCourse(id,"");
+            }else {
+                pages = (Page<SelectCourse>)selectCourseMapper.searchStudentCourse(id,title);
+            }
+        }
+        return new PageBean(pages.getTotal(), pages.getResult());
+    }
+
 }
