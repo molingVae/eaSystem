@@ -25,7 +25,7 @@ public class SelectCourseController {
     //选课信息（）
     @GetMapping("/searchSelectionInfo")
     public PageBean searchSelectionInfo(String title,String token, Integer page, Integer limit) {
-        return selectCourseService.searchSelectionInfo(title,token,page, limit);
+        return selectCourseService.searchSelectionInfo(title,token,page,limit);
     }
 
     //课表
