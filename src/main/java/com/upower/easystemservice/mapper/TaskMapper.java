@@ -25,4 +25,7 @@ public interface TaskMapper {
     //教学任务查询（教师）
     @Select("select taskid,taskcourname,taskyear,taskteam,taskway,taskdepart from taskinfo where taskteaid=#{taskteaid}")
     List<TeacherTask> serachTeacherTask(@Param("taskteaid")Integer taskteaid);
+
+    @Select("select user_id from user where name=#{name}")
+    Integer selectIdByname(String name);
 }

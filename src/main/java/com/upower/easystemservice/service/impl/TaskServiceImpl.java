@@ -15,17 +15,19 @@ import java.util.List;
 
 @Service
 public class TaskServiceImpl implements TaskService {
+
     @Autowired
     private TaskMapper taskMapper;
 
     /**
      * 教学任务查询（管理员）
+     *
      * @param page
      * @param limit
      * @return
      */
     @Override
-    public PageBean serachAdminTask(String name,Integer page, Integer limit) {
+    public PageBean serachAdminTask(String name, Integer page, Integer limit) {
 
         Page<AdminTask> pages;
         PageHelper.startPage(page, limit);//开启分页
@@ -40,6 +42,7 @@ public class TaskServiceImpl implements TaskService {
 
     /**
      * 教学任务添加（管理员）
+     *
      * @param adminTask
      * @return
      */
@@ -55,6 +58,7 @@ public class TaskServiceImpl implements TaskService {
 
     /**
      * 教学任务删除（管理员）
+     *
      * @param taskid
      * @return
      */
@@ -70,6 +74,7 @@ public class TaskServiceImpl implements TaskService {
 
     /**
      * 教学任务修改（管理员）
+     *
      * @param adminTask
      * @return
      */
@@ -84,10 +89,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public PageBean serachTeacherTask(Integer taskid,Integer page, Integer limit) {
+    public PageBean serachTeacherTask(String name, Integer page, Integer limit) {
+        Integer id = taskMapper.selectIdByname(name);
         Page<TeacherTask> pages;
-        PageHelper.startPage(page,limit);//开启分页
-        pages = (Page<TeacherTask>) taskMapper.serachTeacherTask(taskid);
+        PageHelper.startPage(page, limit);//开启分页
+        pages = (Page<TeacherTask>) taskMapper.serachTeacherTask(id);
         return new PageBean(pages.getTotal(), pages.getResult());
     }
 }

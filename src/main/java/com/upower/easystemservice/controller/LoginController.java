@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "*",allowCredentials ="true")
+@CrossOrigin(origins = "*")
 @Slf4j
 public class LoginController {
 

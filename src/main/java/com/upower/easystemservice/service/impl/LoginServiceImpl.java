@@ -6,7 +6,6 @@ import com.upower.easystemservice.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 
 /**
  * description:
@@ -15,9 +14,6 @@ import javax.servlet.http.HttpSession;
  */
 @Service
 public class LoginServiceImpl implements LoginService {
-
-    @Autowired
-    private HttpSession session;
 
     @Autowired
     private LoginMapper loginMapper;
@@ -33,14 +29,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public User get_info(String token) {
-        User user = loginMapper.selectUserBytoken(token);
-        session.setAttribute("id", user.getUser_id());
-        System.out.println(session.getAttribute("id"));
-        return user;
+        return loginMapper.selectUserBytoken(token);
     }
 
-    public Integer getId() {
-        System.out.println(session.getAttribute("id"));
-        return (Integer) session.getAttribute("id");
-    }
 }

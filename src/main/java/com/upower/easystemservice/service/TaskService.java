@@ -2,9 +2,6 @@ package com.upower.easystemservice.service;
 
 import com.upower.easystemservice.pojo.AdminTask;
 import com.upower.easystemservice.pojo.PageBean;
-import com.upower.easystemservice.pojo.TeacherTask;
-
-import java.util.List;
 
 public interface TaskService {
 
@@ -16,5 +13,5 @@ public interface TaskService {
 
     String updateAdminTask(AdminTask adminTask);
 
-    PageBean serachTeacherTask(Integer taskid,Integer page, Integer limit);
+    PageBean serachTeacherTask(String name,Integer page, Integer limit);
 }
