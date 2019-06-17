@@ -15,7 +15,8 @@ public class SelectCourseController {
 
     //学生选课（学生）
     @PostMapping("/courseSelection")
-    public String insertSelectCourse(StuCourse stuCourse,String name) {
-        return selectCourseService.insertSelectCourse(stuCourse,name);
+    public String courseSelection(StuCourse course) {
+        System.out.println(course.toString());
+        return selectCourseService.insertSelectCourse(course);
     }
 }
