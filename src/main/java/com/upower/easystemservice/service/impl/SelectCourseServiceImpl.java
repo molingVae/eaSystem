@@ -12,14 +12,14 @@ public class SelectCourseServiceImpl implements SelectCourseService {
     private SelectCourseMapper selectCourseMapper;
 
     @Override
-    public String insertSelectCourse(StuCourse stuCourse,String name) {
-        Integer stuid =selectCourseMapper.selectStuidByname(name);
-        stuCourse.setStuid(stuid);
-        int i = selectCourseMapper.insertStuCourse(stuCourse);
+    public String insertSelectCourse(StuCourse course) {
+        Integer stuid =selectCourseMapper.selectStuidByname(course.getName());
+        course.setStuid(stuid);
+        int i = selectCourseMapper.insertStuCourse(course);
         if (i > 0) {
-            return "添加成功";
+            return "选课成功";
         } else {
-            return "添加失败";
+            return "选课失败";
         }
     }
 }

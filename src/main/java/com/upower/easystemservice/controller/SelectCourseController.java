@@ -14,8 +14,9 @@ public class SelectCourseController {
     private SelectCourseServiceImpl selectCourseService;
 
     //学生选课（学生）
-    @PostMapping("/insertTask")
-    public String insertSelectCourse(StuCourse stuCourse,String name) {
-        return selectCourseService.insertSelectCourse(stuCourse,name);
+    @PostMapping("/courseSelection")
+    public String courseSelection(StuCourse course) {
+        System.out.println(course.toString());
+        return selectCourseService.insertSelectCourse(course);
     }
 }
