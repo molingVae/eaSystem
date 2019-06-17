@@ -15,9 +15,9 @@ public interface SelectCourseMapper {
     Integer selectidByname(String name);
 
     //选课信息(管理员)
-    @Select("select * from user")
-    List<SelectCourse> searchAdminCourse();
+    @Select("select * from selectcourse where courname like '%${courname}%'")
+    List<SelectCourse> searchAdminCourse(@Param("courname") String title);
     //选课信息（老师）
-    @Select("select * from user where user_id=#{user_id}")
-    List<SelectCourse> searchTeacherCourse(Integer user_id);
+    @Select("select * from selectcourse where teacherid=#{teacherid} and courname like '%${courname}%'")
+    List<SelectCourse> searchTeacherCourse(@Param("teacherid") Integer teacherid,@Param("courname") String title);
 }

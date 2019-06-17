@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.upower.easystemservice.mapper.CourseMapper;
 import com.upower.easystemservice.pojo.Course;
 import com.upower.easystemservice.pojo.PageBean;
+import com.upower.easystemservice.pojo.SelectCourse;
 import com.upower.easystemservice.service.CouresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

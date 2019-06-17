@@ -10,6 +10,7 @@ import com.upower.easystemservice.pojo.SelectCourse;
 import com.upower.easystemservice.service.SelectCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 public class SelectCourseServiceImpl implements SelectCourseService {
@@ -36,20 +37,31 @@ public class SelectCourseServiceImpl implements SelectCourseService {
 
     @Override
     public PageBean searchSelectionInfo(String title, String token, Integer page, Integer limit) {
+
         Page<SelectCourse> pages;
-        PageHelper.startPage(page, limit);//开启分页
+
         //根据token判断用户角色
         String access = userInfoMapper.getAccessBytoken(token);
+        Integer id = userInfoMapper.getTeacher(token).getUser_id();
+        PageHelper.startPage(page, limit);//开启分页
         if(ADMIN.equals(access)){
-            //管理员
-            pages = (Page<SelectCourse>) selectCourseMapper.searchAdminCourse();
-            return new PageBean(pages.getTotal(), pages.getResult());
+            if (StringUtils.isEmpty(title)){
+                //管理员
+                pages = (Page<SelectCourse>) selectCourseMapper.searchAdminCourse("");
+            }else {
+                pages = (Page<SelectCourse>) selectCourseMapper.searchAdminCourse(title);
+            }
+
         }else {
             //老师
-            Integer id = userInfoMapper.getTeacher(token).getUser_id();
-            pages = (Page<SelectCourse>) selectCourseMapper.searchTeacherCourse(id);
-            return new PageBean(pages.getTotal(), pages.getResult());
+            if(StringUtils.isEmpty(title)){
+                pages = (Page<SelectCourse>)selectCourseMapper.searchTeacherCourse(id,"");
+            }else {
+                pages = (Page<SelectCourse>)selectCourseMapper.searchTeacherCourse(id,title);
+            }
+
         }
+        return new PageBean(pages.getTotal(), pages.getResult());
     }
 
 }

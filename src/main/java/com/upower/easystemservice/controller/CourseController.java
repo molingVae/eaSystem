@@ -36,3 +36,4 @@ public class CourseController {
         return courseService.updateCoures(course);
     }
 }
+
