@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class StuCourse {
-    private Integer Id;
+    private Integer selectid;
     private Integer stuid;
     private Integer teacherid;
     private String courname;
@@ -14,6 +14,5 @@ public class StuCourse {
     private String taskdepart;
     private String classdate;
     private String classplace;
-
 
 }
