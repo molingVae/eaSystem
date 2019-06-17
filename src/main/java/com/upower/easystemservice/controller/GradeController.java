@@ -32,8 +32,8 @@ public class GradeController {
      * @return
      */
     @PostMapping("/updateGrade")
-    public String updateGrade(Integer grade, String name){
-        return gradeService.updateGrade(grade,name);
+    public String updateGrade(Grade grade){
+        return gradeService.updateGrade(grade);
     }
 
     /**

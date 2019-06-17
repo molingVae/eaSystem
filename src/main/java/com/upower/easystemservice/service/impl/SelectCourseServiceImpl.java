@@ -69,10 +69,8 @@ public class SelectCourseServiceImpl implements SelectCourseService {
     @Override
     public PageBean searchSchedule(String title, String token, Integer page, Integer limit) {
 
-
         Page<SelectCourse> pages;
-
-        //根据token判断用户角色
+        //根据token判断用 户角色
         String access = userInfoMapper.getAccessBytoken(token);
 
         Integer id = userInfoMapper.getTeacher(token).getUser_id();

@@ -38,13 +38,11 @@ public class GradeServiceImpl implements GradeService {
     /**
      * 修改成疾
      * @param grade
-     * @param name
      * @return
      */
     @Override
-    public String updateGrade(Integer grade, String name) {
-        Integer stuid =gradeMapper.selectidByname(name);
-        int i = gradeMapper.updateGrade(grade,stuid);
+    public String updateGrade(Grade grade) {
+        int i = gradeMapper.updateGrade(grade);
         if (i > 0) {
             return "修改成功";
         } else {

@@ -13,18 +13,19 @@ public interface GradeMapper {
             "values(#{stuid},#{stuname},#{coursename},#{credit},#{grade},#{teacherid})")
     int insertGrade(Grade grade);
     //修改成绩
-    @Update("update grade set grade=#{grade} where stuid=#{stuid} ")
-    int updateGrade(@Param("grade") Integer grade, @Param("stuid") Integer stuid);
+    @Update("update grade set stuid=#{stuid},stuname=#{stuname}," +
+            "coursename=#{coursename},credit=#{credit},grade=#{grade},teacherid=#{teacherid} where gradeid=#{gradeid} ")
+    int updateGrade(Grade grade);
 
     @Select("select user_id from user where name=#{name}")
     Integer selectidByname(String name);
 
-    @Select("select * from grade where courname like '%${courname}%' and teacherid=#{teacherid} and stuid=#{stuid}")
-    List<Grade> searchGradeAdmin(@Param("courname") String title);
+    @Select("select * from grade where coursename like '%${coursename}%'")
+    List<Grade> searchGradeAdmin(@Param("coursename") String title);
 
-    @Select("select * from grade where teacherid=#{teacherid} and courname like '%${courname}%'")
-    List<Grade> searchGradeTeacher(@Param("teacherid") Integer teacherid,@Param("courname") String title);
+    @Select("select * from grade where teacherid=#{teacherid} and coursename like '%${coursename}%'")
+    List<Grade> searchGradeTeacher(@Param("teacherid") Integer teacherid,@Param("coursename") String title);
 
-    @Select("select * from grade where stuid=#{stuid} and courname like '%${courname}%'")
-    List<Grade> searchGradeStudent(@Param("stuid") Integer stuid,@Param("courname") String title);
+    @Select("select * from grade where stuid=#{stuid} and coursename like '%${coursename}%'")
+    List<Grade> searchGradeStudent(@Param("stuid") Integer stuid,@Param("coursename") String title);
 }
