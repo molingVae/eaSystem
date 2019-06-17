@@ -1,21 +1,23 @@
 package com.upower.easystemservice.mapper;
 
 import com.upower.easystemservice.pojo.SelectCourse;
-import com.upower.easystemservice.pojo.StuCourse;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface SelectCourseMapper {
-
-    @Select("select * from selectcourse where stuid like '%${stuid}%' and roles=#{roles}")
-    List<SelectCourse> searchSelectCourse(@Param("stuid") Integer stuid, @Param("roles") String roles);
-
+    //学生选课(学生)
     @Insert("insert into selectcourse(stuid,teacherid,courname,taskyear,taskteam,taskway,taskdepart,classdate,classplace) " +
             "values(#{stuid},#{teacherid},#{courname},#{taskyear},#{taskteam},#{taskway},#{taskdepart},#{classdate},#{classplace})")
-    int insertStuCourse(StuCourse stuCourse);
-
+    int insertStuCourse(SelectCourse stuCourse);
     @Select("select user_id from user where name=#{name}")
-    Integer selectStuidByname(String name);
+    Integer selectidByname(String name);
+
+    //选课信息(管理员)
+    @Select("select * from user")
+    List<SelectCourse> searchAdminCourse();
+    //选课信息（老师）
+    @Select("select * from user where user_id=#{user_id}")
+    List<SelectCourse> searchTeacherCourse(Integer user_id);
 }
